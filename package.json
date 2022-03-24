@@ -1,12 +1,19 @@
 {
   "name": "part-this.space",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Romelianism/PartThis.Space.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Romelianism/PartThis.Space/issues"
   },
   "dependencies": {
     "next": "12.1.0",
