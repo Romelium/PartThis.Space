@@ -21,4 +21,4 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const analytics = isBrowser ? getAnalytics(app) : undefined;
-export const auth = initializeAuth(app, {errorMap: debugErrorMap});
+export const auth = getAuth(app);
