@@ -7,8 +7,15 @@ export const getServerSideProps = async () => {
   const spaces = await prisma.space.findMany({
     take: 10,
     select: {
+      id: true,
       title: true,
       source: true,
+      creator: {
+        select: {
+          id: true,
+          email: true,
+        },
+      },
     },
   });
   return { props: { spaces } };
@@ -29,6 +36,12 @@ const Home: NextPage<
           <li>
             <h2>{space.title}</h2>
             <div>{space.source}</div>
+            <hr />
+            <pre>
+              Made by {space.creator.email} <br />
+              Creator ID: {space.creator.id} <br />
+              Space ID: {space.id} <br />
+            </pre>
           </li>
         ))}
       </ul>
