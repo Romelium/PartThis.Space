@@ -1,14 +1,50 @@
-import type { NextPage } from "next";
+import type { InferGetServerSidePropsType, NextPage } from "next";
 import { Login } from "../components/Login";
 import useUser from "../hooks/useUser";
+import prisma from "../lib/prisma";
 
-const Home: NextPage = () => {
+export const getServerSideProps = async () => {
+  const spaces = await prisma.space.findMany({
+    take: 10,
+    select: {
+      id: true,
+      title: true,
+      source: true,
+      creator: {
+        select: {
+          id: true,
+          email: true,
+        },
+      },
+    },
+  });
+  return { props: { spaces } };
+};
+
+const Home: NextPage<
+  InferGetServerSidePropsType<typeof getServerSideProps>
+> = ({ spaces }) => {
   const [user, loading] = useUser();
 
   return (
     <div>
       {loading ? "Loading..." : user?.email ?? "Not logged in"}
       <Login />
+      Spaces:
+      <ul>
+        {spaces.map((space) => (
+          <li>
+            <h2>{space.title}</h2>
+            <div>{space.source}</div>
+            <hr />
+            <pre>
+              Made by {space.creator.email} <br />
+              Creator ID: {space.creator.id} <br />
+              Space ID: {space.id} <br />
+            </pre>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
