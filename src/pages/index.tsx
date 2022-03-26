@@ -33,7 +33,7 @@ const Home: NextPage<
       Spaces:
       <ul>
         {spaces.map((space) => (
-          <li>
+          <li key={space.id}>
             <h2>{space.title}</h2>
             <div>{space.source}</div>
             <hr />
