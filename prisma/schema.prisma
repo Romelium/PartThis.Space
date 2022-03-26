@@ -8,3 +8,20 @@ datasource db {
   url                  = env("DATABASE_URL")
   referentialIntegrity = "prisma"
 }
+
+model User {
+  id        String   @id @db.VarChar(36)
+  createdAt DateTime @default(now())
+  email     String   @unique
+  posts     Space[]
+}
+
+model Space {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String   @db.VarChar(128)
+  source    String   @db.Text
+  creator   User     @relation(fields: [creatorId], references: [id])
+  creatorId String
+}
