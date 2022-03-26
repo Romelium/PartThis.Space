@@ -21,7 +21,7 @@ const Publish = () => {
         body: JSON.stringify({
           title,
           source,
-          jwt: await user.getIdToken(),
+          idToken: await user.getIdToken(),
         }),
       });
   };
