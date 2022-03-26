@@ -7,3 +7,4 @@ export const app = !admin.apps.length
       ),
     })
   : admin.app();
+export const auth = admin.auth();
