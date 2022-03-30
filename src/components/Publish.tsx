@@ -1,3 +1,4 @@
+import Router from "next/router";
 import { FormEventHandler } from "react";
 import useUser from "../hooks/useUser";
 
@@ -15,8 +16,8 @@ const Publish = () => {
       source: HTMLTextAreaElement;
     };
 
-    if (user)
-      await fetch("/api/publish", {
+    if (user) {
+      const res = await fetch("/api/publish", {
         method: "POST",
         body: JSON.stringify({
           title,
@@ -24,6 +25,9 @@ const Publish = () => {
           idToken: await user.getIdToken(),
         }),
       });
+      console.log(await res.json());
+      Router.reload();
+    }
   };
 
   return (
