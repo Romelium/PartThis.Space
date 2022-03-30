@@ -1,5 +1,6 @@
 import {
   createUserWithEmailAndPassword,
+  sendEmailVerification,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { FormEventHandler } from "react";
@@ -7,13 +8,22 @@ import { auth } from "../lib/firebase";
 
 type AuthError = { code: string; message: string };
 
-const signUp = (email: string, password: string) => {
-  return createUserWithEmailAndPassword(auth, email, password).catch(
-    ({ message }: AuthError) => {
-      window.alert(message.replace("Firebase: ", ""));
-      return null;
-    }
-  );
+const signUp = async (email: string, password: string) => {
+  const userCredential = await createUserWithEmailAndPassword(
+    auth,
+    email,
+    password
+  ).catch(({ message }: AuthError) => {
+    window.alert(message.replace("Firebase: ", ""));
+    return null;
+  });
+  if (userCredential) {
+    sendEmailVerification(userCredential.user);
+    window.alert(
+      `We just sent an email to ${userCredential.user.email}. Click the link in the email to verify your account.`
+    );
+  }
+  return userCredential;
 };
 
 /**

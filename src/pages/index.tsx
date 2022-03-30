@@ -1,5 +1,6 @@
 import type { InferGetServerSidePropsType, NextPage } from "next";
 import { Login } from "../components/Login";
+import Publish from "../components/Publish";
 import useUser from "../hooks/useUser";
 import prisma from "../lib/prisma";
 
@@ -30,6 +31,9 @@ const Home: NextPage<
     <div>
       {loading ? "Loading..." : user?.email ?? "Not logged in"}
       <Login />
+      <hr />
+      <em>Publish:</em> <Publish />
+      <hr />
       Spaces:
       <ul>
         {spaces.map((space) => (
