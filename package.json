@@ -20,6 +20,7 @@
     "firebase": "^9.6.9",
     "firebase-admin": "^10.0.2",
     "html-react-parser": "^1.4.10",
+    "isomorphic-dompurify": "latest",
     "next": "12.1.0",
     "prisma": "^3.11.1",
     "react": "17.0.2",
