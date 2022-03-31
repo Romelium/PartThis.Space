@@ -36,7 +36,7 @@ const Home: NextPage<
         {spaces.map((space) => (
           <li key={space.id}>
             <h2>{space.title}</h2>
-            <div style={{ whiteSpace: "pre-wrap" }}>{space.source}</div>
+            <iframe srcDoc={space.source} />
             <hr />
             <pre>
               Made by {space.creator.email} <br />
