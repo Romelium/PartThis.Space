@@ -1,3 +1,4 @@
+import DOMPurify from "isomorphic-dompurify";
 import type { InferGetServerSidePropsType, NextPage } from "next";
 import Publish from "../components/Publish";
 import useUser from "../hooks/useUser";
@@ -36,7 +37,7 @@ const Home: NextPage<
         {spaces.map((space) => (
           <li key={space.id}>
             <h2>{space.title}</h2>
-            <iframe srcDoc={space.source} />
+            <iframe srcDoc={DOMPurify.sanitize(space.source)} />
             <hr />
             <pre>
               Made by {space.creator.email} <br />
