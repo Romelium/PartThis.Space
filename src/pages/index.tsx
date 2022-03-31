@@ -26,7 +26,6 @@ const Home: NextPage<
 > = ({ spaces }) => {
   const [user, loading] = useUser();
 
-  console.log(spaces);
   return (
     <div>
       <a href="/login">
