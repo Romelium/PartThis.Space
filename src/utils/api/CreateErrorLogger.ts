@@ -1,8 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { NormalErrorType } from "./ErrorTypes";
 
+export type ErrorLogger = (
+  statusCode: number,
+  { code, messages }: NormalErrorType
+) => void;
+
 const CreateErrorLogger =
-  (res: NextApiResponse, req: NextApiRequest) =>
+  (res: NextApiResponse, req: NextApiRequest): ErrorLogger =>
   (statusCode: number, { code, messages }: NormalErrorType) => {
     const error = {
       code,
