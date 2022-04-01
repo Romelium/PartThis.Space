@@ -1,5 +1,6 @@
 import DOMPurify from "isomorphic-dompurify";
 import type { InferGetServerSidePropsType, NextPage } from "next";
+import Router from "next/router";
 import Publish from "../components/Publish";
 import useUser from "../hooks/useUser";
 import prisma from "../lib/prisma";
@@ -44,6 +45,26 @@ const Home: NextPage<
               Creator ID: {space.creator.id} <br />
               Space ID: {space.id} <br />
             </pre>
+            <button
+              style={{
+                display:
+                  loading || user?.uid !== space.creator.id
+                    ? "none"
+                    : undefined,
+              }}
+              onClick={async () => {
+                const res = await fetch(`/api/space/${space.id}`, {
+                  method: "DELETE",
+                  body: JSON.stringify({
+                    idToken: await user!.getIdToken(),
+                  }),
+                });
+                console.log(await res.json());
+                Router.reload();
+              }}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
