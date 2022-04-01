@@ -1,5 +1,5 @@
-import { auth } from "../../lib/firebase-admin";
-import { ErrorLogger } from "./CreateErrorLogger";
+import { auth } from "lib/firebase-admin";
+import { ErrorLogger } from "utils/api/CreateErrorLogger";
 
 const ValidateIdToken = async (
   idToken: string,

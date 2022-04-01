@@ -1,6 +1,6 @@
+import { Login } from "components/Login";
+import useUser from "hooks/useUser";
 import { NextPage } from "next";
-import { Login } from "../components/Login";
-import useUser from "../hooks/useUser";
 
 const LoginPage: NextPage = () => {
   const [user, loading] = useUser();
