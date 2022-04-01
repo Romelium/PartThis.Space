@@ -1,5 +1,5 @@
 import { PrismaPromise } from "@prisma/client";
-import { ErrorLogger } from "./CreateErrorLogger";
+import { ErrorLogger } from "utils/api/CreateErrorLogger";
 
 const ValidateFind = async <T>(
   prismaFind: PrismaPromise<T>,

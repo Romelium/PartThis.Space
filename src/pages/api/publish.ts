@@ -1,9 +1,9 @@
+import { auth } from "lib/firebase-admin";
+import prisma from "lib/prisma";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { auth } from "../../lib/firebase-admin";
-import prisma from "../../lib/prisma";
-import CreateErrorLogger from "../../utils/api/CreateErrorLogger";
-import { NormalErrorType } from "../../utils/api/ErrorTypes";
-import Try from "../../utils/Try";
+import CreateErrorLogger from "utils/api/CreateErrorLogger";
+import { NormalErrorType } from "utils/api/ErrorTypes";
+import Try from "utils/Try";
 
 type ReqData = {
   title?: string;

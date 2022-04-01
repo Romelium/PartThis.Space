@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { NormalErrorType } from "./ErrorTypes";
+import { NormalErrorType } from "utils/api/ErrorTypes";
 
 export type ErrorLogger = (
   statusCode: number,

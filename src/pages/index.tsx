@@ -1,9 +1,9 @@
+import Publish from "components/Publish";
+import useUser from "hooks/useUser";
 import DOMPurify from "isomorphic-dompurify";
+import prisma from "lib/prisma";
 import type { InferGetServerSidePropsType, NextPage } from "next";
 import Router from "next/router";
-import Publish from "../components/Publish";
-import useUser from "../hooks/useUser";
-import prisma from "../lib/prisma";
 
 export const getServerSideProps = async () => {
   const spaces = await prisma.space.findMany({

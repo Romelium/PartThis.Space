@@ -1,10 +1,10 @@
+import prisma from "lib/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../../lib/prisma";
-import CreateErrorLogger from "../../../utils/api/CreateErrorLogger";
-import { NormalErrorType } from "../../../utils/api/ErrorTypes";
-import ValidateBody from "../../../utils/api/ValidateBody";
-import ValidateFind from "../../../utils/api/ValidateFind";
-import ValidateIdToken from "../../../utils/api/ValidateIdToken";
+import CreateErrorLogger from "utils/api/CreateErrorLogger";
+import { NormalErrorType } from "utils/api/ErrorTypes";
+import ValidateBody from "utils/api/ValidateBody";
+import ValidateFind from "utils/api/ValidateFind";
+import ValidateIdToken from "utils/api/ValidateIdToken";
 
 type ReqData = {
   idToken: string;

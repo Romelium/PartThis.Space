@@ -1,5 +1,5 @@
-import { ErrorLogger } from "./CreateErrorLogger";
-import Try from "../Try";
+import { ErrorLogger } from "utils/api/CreateErrorLogger";
+import Try from "utils/Try";
 
 const ValidateBody = <R>(
   body: string,
