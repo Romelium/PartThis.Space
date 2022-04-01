@@ -1,3 +1,4 @@
+import DOMPurify from "isomorphic-dompurify";
 import type { InferGetServerSidePropsType, NextPage } from "next";
 import Publish from "../components/Publish";
 import useUser from "../hooks/useUser";
@@ -26,7 +27,6 @@ const Home: NextPage<
 > = ({ spaces }) => {
   const [user, loading] = useUser();
 
-  console.log(spaces);
   return (
     <div>
       <a href="/login">
@@ -37,7 +37,7 @@ const Home: NextPage<
         {spaces.map((space) => (
           <li key={space.id}>
             <h2>{space.title}</h2>
-            <div style={{ whiteSpace: "pre-wrap" }}>{space.source}</div>
+            <iframe srcDoc={DOMPurify.sanitize(space.source)} />
             <hr />
             <pre>
               Made by {space.creator.email} <br />
