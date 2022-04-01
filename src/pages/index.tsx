@@ -37,7 +37,9 @@ const Home: NextPage<
       <ul>
         {spaces.map((space) => (
           <li key={space.id}>
-            <h2>{space.title}</h2>
+            <h2>
+              <a href={`/space/${space.id}`}>{space.title}</a>
+            </h2>
             <iframe srcDoc={DOMPurify.sanitize(space.source)} />
             <hr />
             <pre>
